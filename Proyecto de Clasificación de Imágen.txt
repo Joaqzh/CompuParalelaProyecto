@@ -1,0 +1,40 @@
+Proyecto de Clasificación de Imágenes
+Este proyecto consiste en un sistema de clasificación de imágenes de Modelos de Carros en diferentes categorías o clases (por ejemplo: SUV, Convertible, Pickup, etc.)
+Utilizando técnicas de extracción de características como SIFT (Scale-Invariant Feature Transform) y HOG (Histogram of Oriented Gradients).
+
+🎯 Objetivo principal
+** El enfoque clave del proyecto es la paralelización utilizando hilos (threads) para optimizar el procesamiento de imágenes. 
+** Gracias a la ejecución en paralelo, se reduce considerablemente el tiempo necesario para:
+
+- Leer imágenes desde disco
+- Extraer características (SIFT y HOG)
+- Etiquetar los datos
+
+Esto hace que el pipeline completo sea más eficiente, especialmente al trabajar con grandes volúmenes de imágenes.
+
+🗂️ Estructura del Proyecto
+Proyecto/
+│
+├── EntrenarModelo.ipynb          # Notebook principal donde se entrena el modelo
+│
+└── Data/
+    ├── train/                    # Imágenes de entrenamiento
+    │   ├── clase1/
+    │   ├── clase2/
+    │   ├── ...
+    │   └── claseN/
+    │
+    └── test/                     # Imágenes de prueba
+        ├── clase1/
+        ├── clase2/
+        ├── ...
+        └── claseN/
+
+Cada subcarpeta dentro de train/ y test/ contiene imágenes correspondientes a una clase específica del conjunto de datos.
+
+⚙️ Proceso
+✅ Carga de imágenes: realizada de forma paralela, con un hilo por cada clase.
+✅ Extracción de características (SIFT y HOG): ejecutada en paralelo para cada imagen.
+✅ Etiquetado: también realizado en paralelo.
+🟡 Entrenamiento del modelo: ejecutado de forma secuencial para mayor control y trazabilidad.
+🧪 Evaluación y pruebas: aplicadas sobre el conjunto de prueba.
